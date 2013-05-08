@@ -4,6 +4,7 @@ cd example
 mkdir -p src/main/java/org/example
 Creating the HelloWorld Class
 vim src/main/java/org/example/HelloWorld.java 
+
 (1)#java
 package org.example;
  
