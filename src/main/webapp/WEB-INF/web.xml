@@ -54,7 +54,7 @@
 	 
 	<!-- Spring 分发器 -->
 	<servlet>
-		<servlet-name>exampleServlet</servlet-name>
+		<servlet-name>servlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
@@ -63,7 +63,7 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>exampleServlet</servlet-name>
+		<servlet-name>servlet</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>	 
 	<welcome-file-list>

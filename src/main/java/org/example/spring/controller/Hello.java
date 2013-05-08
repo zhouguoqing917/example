@@ -3,16 +3,27 @@ package org.example.spring.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.ModelAndView; 
+import org.springframework.web.bind.annotation.PathVariable; 
+import org.springframework.web.bind.annotation.ResponseBody;
+
 
 @Controller
-@RequestMapping("/hello.do")
 public class Hello {
-	@RequestMapping(method = RequestMethod.GET)
+	
+	@RequestMapping(value="/hello.do",method = RequestMethod.GET)
 	public ModelAndView hello() {
-		System.out.println("hello world");
+		System.out.println("hello.do");
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("hello world");
+		mv.setViewName("hello");
 		return mv;
 	}
+
+	@ResponseBody
+    @RequestMapping("/")
+    public String index() {
+		System.out.println("index");
+        return "This is a rest demo";
+    }
+
 }

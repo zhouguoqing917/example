@@ -63,11 +63,7 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>${jettyVersion}</version>
 				<configuration>
-					<webApp>
-						<contextPath>${project.artifactId}-${project.version}.war</contextPath>
-					</webApp>
-					<stopPort>8080</stopPort>
-					<scanIntervalSeconds>2</scanIntervalSeconds>
+				    <scanIntervalSeconds>2</scanIntervalSeconds>
 				</configuration>
 			</plugin>
 

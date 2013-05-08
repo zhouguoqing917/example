@@ -10,19 +10,19 @@ import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.example.spring.service.AccountService;
+import org.springframework.web.servlet.ModelAndView;
 
-@Controller
-@RequestMapping("/account.do")
+@Controller 
 public class AccountController {
 
 	@Resource
 	private AccountService accountService;
 
-	@RequestMapping(method = RequestMethod.GET)
-	public void hello(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-		String username = ServletRequestUtils.getRequiredStringParameter(request, "username");
-		String password = ServletRequestUtils.getRequiredStringParameter(request, "password");
-		System.out.println(accountService.verify(username, password));
+	@RequestMapping(value="account.do",method=RequestMethod.GET)
+	public ModelAndView account(HttpServletRequest request, HttpServletResponse response) throws Exception { 
+		System.out.println("account.do");
+		ModelAndView mv = new ModelAndView("account","message","login ok!");	 
+		return mv;
+		 
 	}
 }
