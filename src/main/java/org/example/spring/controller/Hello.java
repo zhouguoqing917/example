@@ -16,6 +16,7 @@ public class Hello {
 		System.out.println("hello.do");
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("hello");
+		System.out.println(mv.getView().PATH_VARIABLES);
 		return mv;
 	}
 
