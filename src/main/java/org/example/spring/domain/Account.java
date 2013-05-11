@@ -10,8 +10,8 @@ public class Account implements Serializable {
 	 */
 	private static final long serialVersionUID = -533698031946372178L;
 
-	private String username;
-	private String password;
+	private String username="admin";
+	private String password="123";
 
 	/**
 	 * @param username

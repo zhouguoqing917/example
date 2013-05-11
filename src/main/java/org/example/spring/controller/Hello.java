@@ -15,8 +15,7 @@ public class Hello {
 	public ModelAndView hello() {
 		System.out.println("hello.do");
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("hello");
-		System.out.println(mv.getView().PATH_VARIABLES);
+		mv.setViewName("hello");		 
 		return mv;
 	}
 

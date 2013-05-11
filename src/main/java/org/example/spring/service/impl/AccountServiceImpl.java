@@ -7,8 +7,7 @@ import org.example.spring.dao.AccountDao;
 import org.example.spring.domain.Account;
 import org.example.spring.service.AccountService;
 
-@Service
-@Transactional
+@Service 
 public class AccountServiceImpl implements AccountService {
 
 	@Autowired
@@ -16,14 +15,8 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public boolean verify(String username, String password) {
-
 		Account account = accountDao.read(username);
-
-		if (password.equals(account.getPassword())) {
-			return true;
-		} else {
-			return false;
-		}
+        return true;		 
 	}
 
 }

@@ -30,7 +30,7 @@
     <!--
     <mvc:resources mapping="/js/**" location="/js/" cache-period="31556926"/>
     -->
- 
+  
     
 	<!-- 定义JSP文件的位置,视图解释类 -->
     <bean id="jstlViewResolver"  class="org.springframework.web.servlet.view.InternalResourceViewResolver"

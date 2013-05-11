@@ -9,7 +9,7 @@ import net.sf.cglib.proxy.Factory;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.jasper.servlet.JspServlet;
 import org.eclipse.jetty.server.Connector;
-import org.eclipse.jetty.server.Handler;
+import org.eclipse.jetty.server.Handler; 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.ContextHandlerCollection;
 import org.eclipse.jetty.server.handler.DefaultHandler;
@@ -65,10 +65,7 @@ public class JettyWebServer {
 			XmlConfiguration configuration = new XmlConfiguration(config.getInputStream());
 			server = (Server) configuration.configure();
 
-			// Resource springconfig = Resource.newResource(JETTY_SPRING_FILE);
-			// System.out.println(springconfig.getFile().getAbsolutePath());
-			// XmlConfiguration.main(new String[] { springconfig.getFile().getAbsolutePath() });
-
+		 
 			// webapp
 			WebAppContext wac = new WebAppContext();
 			wac.setDescriptor("WEB-INF/web.xml");
@@ -82,21 +79,21 @@ public class JettyWebServer {
 			ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
 			context.setDecorators(wac.getDecorators());
 
-			ClassPathXmlApplicationContext res = new ClassPathXmlApplicationContext("classpath*:/applicationContext.xml");
+			ClassPathXmlApplicationContext res = new ClassPathXmlApplicationContext("classpath*:applicationContext.xml");
 			DefaultListableBeanFactory beans = (DefaultListableBeanFactory) res.getBeanFactory();
 			for (String s : res.getBeanDefinitionNames()) {
 				System.out.println(" " + s + "  " + res.getBeanDefinitionCount());
 			}
 
 			ContextLoaderListener listener = new ContextLoaderListener();
-			context.setInitParameter("contextConfigLocation", "classpath*:/applicationContext.xml");
+			context.setInitParameter("contextConfigLocation", "classpath*:applicationContext.xml");
 			context.addEventListener(listener);
 
 
 			// /**spring control*/
 
 			ServletHolder holder = new ServletHolder(new DispatcherServlet());
-			holder.setInitParameter("contextConfigLocation", "classpath*:/spring-servlet.xml");
+			holder.setInitParameter("contextConfigLocation", "classpath*:spring-servlet.xml");
 			context.addServlet(holder, "/*");
 
 			// /**资源文件解析*/
@@ -108,8 +105,8 @@ public class JettyWebServer {
 			context.addServlet(holder, "*.jsp");
 
 			/**html*/
-			holder = new ServletHolder(new DefaultServlet());
-			context.addServlet(holder, "*.html");
+			//holder = new ServletHolder(new DefaultServlet());
+			//context.addServlet(holder, "*.html");
 
 			ContextHandlerCollection contexts = new ContextHandlerCollection();
 			contexts.setHandlers(new Handler[] { wac, context });

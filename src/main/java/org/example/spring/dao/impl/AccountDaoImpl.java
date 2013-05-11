@@ -8,7 +8,7 @@ import org.example.spring.domain.Account;
 public class AccountDaoImpl implements AccountDao {
 	@Override
 	public Account read(String username) {
-		return new Account(username,"wolf");
+		return new Account(username,"123");
 	}
 
 }
