@@ -15,6 +15,30 @@
 
 	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
 	
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxActive" value="5000" />
+		<property name="maxIdle" value="100" />
+		<property name="maxWait" value="5000" />
+		<property name="testOnBorrow" value="true" />
+		<property name="testOnReturn" value="true" />
+	</bean>
+	<bean id="jedis.shardInfo" class="redis.clients.jedis.JedisShardInfo">
+		<constructor-arg index="0" value="${redis.server.name}"/>
+		<constructor-arg index="1" value="${redis.server.port}" type="int"/>
+	</bean>
+	<bean id="shardedJedisPool" class="redis.clients.jedis.ShardedJedisPool">
+		<constructor-arg index="0" ref="jedisPoolConfig" />
+		<constructor-arg index="1">
+			<list>
+				<ref bean="jedis.shardInfo" />
+			</list>
+		</constructor-arg>
+		<constructor-arg index="2" ref="hash" />
+	</bean>
+	
+	<bean id="hash" class="redis.clients.util.MurmurHash"></bean>
+	
+	
 	<context:annotation-config/>
 	
 	<context:component-scan base-package="org.example.spring.service" />
