@@ -14,7 +14,20 @@
          default-autowire="byName" default-lazy-init="false">
 
 	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
-	
+ 
+
+    <!-- 加载配置文件 -->
+    <bean id="propertyConfigurerForProject"
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="order" value="1" />
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
+        <property name="locations">
+            <list>
+                <value>classpath*:config/*.properties</value>
+            </list>
+        </property>
+    </bean>
+    
 	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
 		<property name="maxActive" value="5000" />
 		<property name="maxIdle" value="100" />
@@ -37,12 +50,12 @@
 	</bean>
 	
 	<bean id="hash" class="redis.clients.util.MurmurHash"></bean>
-	
+	 <bean id="localCache" class="org.example.cache.CacheImpl"></bean>
 	
 	<context:annotation-config/>
 	
 	<context:component-scan base-package="org.example.spring.service" />
 	 
-	<context:component-scan    base-package="org.example.spring.dao" />
+	<context:component-scan base-package="org.example.spring.dao" />
 	
 </beans>
