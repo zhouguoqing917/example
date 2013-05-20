@@ -124,4 +124,4 @@ There are a great deal of configuration options available for the jetty-maven-pl
 #(6) Building a WAR file  to Web Application Archive (WAR) file from the project with the command:
 mvn package    
 #
-
+taglib-json,localCache,ip-seeker
