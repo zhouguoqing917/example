@@ -1,5 +1,4 @@
-youku tudou mobile api
-===
+
 cd example 
 mkdir -p src/main/java/org/example
 Creating the HelloWorld Class
